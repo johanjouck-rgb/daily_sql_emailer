@@ -11,7 +11,7 @@ from email.mime.multipart import MIMEMultipart
 # Vul hier je Gmail App Password in (NIET je gewone wachtwoord)
 # Als je GitHub Actions gebruikt, haal dit dan uit os.environ["GMAIL_APP_PASSWORD"]
 SENDER_EMAIL = "ambrasdata@gmail.com"
-SENDER_PASSWORD = "tgek ruin jbte vlpf" 
+SENDER_PASSWORD = os.environ.get("GMAIL_APP_PASSWORD")
 RECEIVER_EMAIL = "Johan.jouck@hotmail.com"
 
 # Bestandsnaam van je vragen database
@@ -163,4 +163,5 @@ def send_email():
         print(f"❌ Fout bij verzenden: {e}")
 
 if __name__ == "__main__":
+
     send_email()
