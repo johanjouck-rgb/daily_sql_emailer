@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "type": "Flashcard",
+    "question": "Wat is de 'Gouden Regel' van de GROUP BY clausule?",
+    "answer": "Elke kolom in de SELECT die NIET in een aggregatiefunctie (zoals SUM, AVG) zit, MOET in de GROUP BY clausule staan."
+  },
+  {
+    "id": 2,
+    "type": "Query Challenge",
+    "question": "Schrijf een query die alle unieke klanten (customer_id) telt uit de tabel 'orders', maar alleen voor orders uit 2024.",
+    "answer": "SELECT COUNT(DISTINCT customer_id) FROM orders WHERE order_date >= '2024-01-01' AND order_date <= '2024-12-31';"
+  },
+  {
+    "id": 3,
+    "type": "Theorie",
+    "question": "Wat is het fundamentele verschil tussen een INNER JOIN en een LEFT JOIN?",
+    "answer": "INNER JOIN toont alleen rijen met een match in beide tabellen. LEFT JOIN toont ALLE rijen uit de linkertabel, plus de matches uit de rechter (en NULL als er geen match is)."
+  },
+  {
+    "id": 4,
+    "type": "Flashcard",
+    "question": "Wat doet het '%' teken in een LIKE statement?",
+    "answer": "Het is een wildcard die staat voor nul, één of meerdere willekeurige karakters."
+  },
+  {
+    "id": 5,
+    "type": "Query Challenge",
+    "question": "Je wilt de top 5 duurste producten zien. De tabel heet 'products' en de kolom 'price'.",
+    "answer": "SELECT * FROM products ORDER BY price DESC LIMIT 5;"
+  },
+  {
+    "id": 6,
+    "type": "Theorie",
+    "question": "Waarom geeft `WHERE sales > 1000` een error als je aggregaties gebruikt, en moet je `HAVING` gebruiken?",
+    "answer": "Omdat WHERE filtert op de ruwe invoerregels (voordat er gegroepeerd is). HAVING filtert pas op de resultaten NA de groepering/aggregatie."
+  },
+  {
+    "id": 7,
+    "type": "Flashcard",
+    "question": "Wat betekent ACID in de context van databases?",
+    "answer": "Atomicity, Consistency, Isolation, Durability. Het zijn de eigenschappen die database transacties betrouwbaar maken."
+  },
+  {
+    "id": 8,
+    "type": "Query Challenge",
+    "question": "Hoe selecteer je alle e-mailadressen die NIET eindigen op 'hotmail.com'?",
+    "answer": "SELECT email FROM users WHERE email NOT LIKE '%hotmail.com';"
+  },
+  {
+    "id": 9,
+    "type": "Theorie",
+    "question": "Wanneer zou je een CTE (Common Table Expression / WITH clause) gebruiken?",
+    "answer": "Om complexe queries op te breken in leesbare stappen, of wanneer je een tijdelijk resultaat meerdere keren nodig hebt in dezelfde query."
+  },
+  {
+    "id": 10,
+    "type": "Flashcard",
+    "question": "Wat is het verschil tussen UNION en UNION ALL?",
+    "answer": "UNION verwijdert dubbele rijen uit het resultaat (trager). UNION ALL toont alles, inclusief dubbelen (sneller)."
+  },
+  {
+    "id": 11,
+    "type": "Query Challenge",
+    "question": "Gebruik een Window Function om elke rij een volgnummer te geven per afdeling (dept_id), gesorteerd op salaris.",
+    "answer": "SELECT *, ROW_NUMBER() OVER (PARTITION BY dept_id ORDER BY salary DESC) FROM employees;"
+  },
+  {
+    "id": 12,
+    "type": "Theorie",
+    "question": "Wat is een 'Self Join' en wanneer gebruik je die?",
+    "answer": "Een tabel die met zichzelf wordt gejoined. Handig voor hiërarchische data, bijvoorbeeld om de naam van de manager van een werknemer te vinden in dezelfde tabel."
+  },
+  {
+    "id": 13,
+    "type": "Flashcard",
+    "question": "Wat doet de functie COALESCE()?",
+    "answer": "Het retourneert de eerste niet-NULL waarde in een lijst. Bijv: COALESCE(telefoon, mobiel, 'Geen nummer')."
+  },
+  {
+    "id": 14,
+    "type": "Theorie",
+    "question": "Wat is het verschil tussen DELETE en TRUNCATE?",
+    "answer": "DELETE verwijdert rijen (kan met WHERE, kan teruggedraaid worden). TRUNCATE leegt de hele tabel direct (sneller, kan vaak niet teruggedraaid worden, reset auto-increments)."
+  },
+  {
+    "id": 15,
+    "type": "Query Challenge",
+    "question": "Hoe combineer je de kolommen 'voornaam' en 'achternaam' met een spatie ertussen?",
+    "answer": "SELECT CONCAT(voornaam, ' ', achternaam) FROM gebruikers; (Of in sommige SQL dialecten: voornaam || ' ' || achternaam)"
+  },
+  {
+    "id": 16,
+    "type": "Flashcard",
+    "question": "Wat is een Primary Key?",
+    "answer": "Een unieke identificatie voor elke rij in een tabel. Mag nooit NULL zijn en moet uniek zijn."
+  },
+  {
+    "id": 17,
+    "type": "Theorie",
+    "question": "Wat is indexering (Indexing) en waarom doe je het?",
+    "answer": "Een datastructuur die de zoeksnelheid op een tabel verbetert (als een inhoudsopgave in een boek), maar het wegschrijven van data (INSERT/UPDATE) iets vertraagt."
+  },
+  {
+    "id": 18,
+    "type": "Query Challenge",
+    "question": "Schrijf een CASE statement die 'Duur' geeft als prijs > 100 en anders 'Goedkoop'.",
+    "answer": "SELECT prijs, CASE WHEN prijs > 100 THEN 'Duur' ELSE 'Goedkoop' END AS prijsklasse FROM producten;"
+  },
+  {
+    "id": 19,
+    "type": "Flashcard",
+    "question": "Wat is een Cartesian Product (of Cross Join)?",
+    "answer": "Wanneer je twee tabellen joint zonder conditie. Elke rij van tabel A wordt gekoppeld aan elke rij van tabel B. (Gevaarlijk voor performance!)."
+  },
+  {
+    "id": 20,
+    "type": "Theorie",
+    "question": "Wat is database normalisatie (Normalization)?",
+    "answer": "Het proces van het organiseren van data om redundantie (dubbele data) te verminderen en data-integriteit te verbeteren (1NF, 2NF, 3NF)."
+  },
+  {
+    "id": 21,
+    "type": "Query Challenge",
+    "question": "Hoe vind je records waar de kolom 'telefoonnummer' leeg (NULL) is?",
+    "answer": "SELECT * FROM klanten WHERE telefoonnummer IS NULL; (Niet '= NULL' gebruiken!)"
+  },
+  {
+    "id": 22,
+    "type": "Flashcard",
+    "question": "Wat doet de functie DISTINCT?",
+    "answer": "Zorgt ervoor dat in het resultaat elke waarde maar één keer voorkomt (verwijdert duplicaten)."
+  },
+  {
+    "id": 23,
+    "type": "Theorie",
+    "question": "Wat is een 'Subquery'?",
+    "answer": "Een query binnen een andere query. Kan in de SELECT, FROM of WHERE clausule staan."
+  },
+  {
+    "id": 24,
+    "type": "Query Challenge",
+    "question": "Bereken de gemiddelde omzet per maand.",
+    "answer": "SELECT MAAND(datum), AVG(omzet) FROM verkopen GROUP BY MAAND(datum);"
+  },
+  {
+    "id": 25,
+    "type": "Flashcard",
+    "question": "Wat is DDL (Data Definition Language)?",
+    "answer": "SQL commando's die de structuur van de database definiëren, zoals CREATE, ALTER en DROP."
+  },
+  {
+    "id": 26,
+    "type": "Theorie",
+    "question": "Wat is het verschil tussen CHAR en VARCHAR?",
+    "answer": "CHAR is een vaste lengte (vult aan met spaties). VARCHAR is variabele lengte (gebruikt alleen wat nodig is + opslag voor lengte)."
+  },
+  {
+    "id": 27,
+    "type": "Query Challenge",
+    "question": "Gebruik BETWEEN om orders te vinden tussen prijs 50 en 100.",
+    "answer": "SELECT * FROM orders WHERE prijs BETWEEN 50 AND 100;"
+  },
+  {
+    "id": 28,
+    "type": "Flashcard",
+    "question": "Wat is een Foreign Key?",
+    "answer": "Een veld dat verwijst naar de Primary Key van een andere tabel. Het legt de relatie tussen twee tabellen vast."
+  },
+  {
+    "id": 29,
+    "type": "Theorie",
+    "question": "Wat is een View?",
+    "answer": "Een virtuele tabel gebaseerd op een query. Het bevat zelf geen data, maar toont data uit de onderliggende tabellen wanneer je het aanroept."
+  },
+  {
+    "id": 30,
+    "type": "Query Challenge",
+    "question": "Hoe verander je de naam van een kolom in de output van je query (alias)?",
+    "answer": "Door 'AS' te gebruiken: SELECT kolomnaam AS nieuwe_naam FROM tabel;"
+  }
+]
