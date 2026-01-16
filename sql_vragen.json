@@ -178,5 +178,65 @@
     "type": "Query Challenge",
     "question": "Hoe verander je de naam van een kolom in de output van je query (alias)?",
     "answer": "Door 'AS' te gebruiken: SELECT kolomnaam AS nieuwe_naam FROM tabel;"
+  },
+  {
+    "id": 31,
+    "type": "Query Analyse",
+    "question": "Wat is het resultaat van: SELECT c.naam, COUNT(o.id) FROM klanten c LEFT JOIN orders o ON c.id = o.klant_id GROUP BY c.naam;",
+    "answer": "Een lijst van alle klanten met het aantal orders dat ze hebben geplaatst, inclusief klanten die 0 orders hebben (dankzij de LEFT JOIN)."
+  },
+  {
+    "id": 32,
+    "type": "Query Analyse",
+    "question": "Wat doet deze query: SELECT * FROM producten WHERE categorie_id IN (SELECT id FROM categorieen WHERE naam = 'Elektronica');",
+    "answer": "Het selecteert alle producten die behoren tot de categorie 'Elektronica' door middel van een subquery op de categorie-tabel."
+  },
+  {
+    "id": 33,
+    "type": "Query Analyse",
+    "question": "Leg uit wat deze query filtert: SELECT medewerker_id, SUM(omzet) FROM verkopen GROUP BY medewerker_id HAVING SUM(omzet) > 10000;",
+    "answer": "Het toont alleen de medewerkers waarvan de totale som van hun omzet groter is dan 10.000."
+  },
+  {
+    "id": 34,
+    "type": "Query Analyse",
+    "question": "Wat is de output van: SELECT naam FROM gebruikers WHERE naam LIKE '_a%';",
+    "answer": "Alle namen waarbij de tweede letter een 'a' is (de underscore staat voor exact één willekeurig karakter)."
+  },
+  {
+    "id": 35,
+    "type": "Query Analyse",
+    "question": "Wat berekent deze query: SELECT SUM(CASE WHEN status = 'geannuleerd' THEN 1 ELSE 0 END) FROM bestellingen;",
+    "answer": "Het telt het totaal aantal bestellingen die de status 'geannuleerd' hebben."
+  },
+  {
+    "id": 36,
+    "type": "Query Analyse",
+    "question": "Wat doet: SELECT naam, COALESCE(korting, 0) FROM producten;",
+    "answer": "Het toont de naam van het product en de korting; als de korting NULL is, wordt er een 0 getoond."
+  },
+  {
+    "id": 37,
+    "type": "Query Analyse",
+    "question": "Wat is het doel van: SELECT e.naam AS Werknemer, m.naam AS Manager FROM medewerkers e JOIN medewerkers m ON e.manager_id = m.id;",
+    "answer": "Dit is een Self Join die een lijst genereert van werknemers gekoppeld aan de naam van hun directe manager."
+  },
+  {
+    "id": 38,
+    "type": "Query Analyse",
+    "question": "Wat doet de RANK() functie hier: SELECT naam, score, RANK() OVER (ORDER BY score DESC) FROM studenten;",
+    "answer": "Het geeft elke student een rangnummer (positie) gebaseerd op hun score, van hoog naar laag."
+  },
+  {
+    "id": 39,
+    "type": "Query Analyse",
+    "question": "Wat is het effect van: UPDATE voorraad SET aantal = aantal + 10 WHERE leverancier_id EXISTS (SELECT id FROM leveranciers WHERE land = 'België');",
+    "answer": "Deze query bevat een fout in de syntax (EXISTS wordt meestal in een WHERE gebruikt met een correlatie), maar de bedoeling is: verhoog de voorraad met 10 voor alle producten van Belgische leveranciers."
+  },
+  {
+    "id": 40,
+    "type": "Query Analyse",
+    "question": "Wat doet: SELECT * FROM artikelen ORDER BY datum_geplaatst DESC LIMIT 1;",
+    "answer": "Het haalt het allernieuwste artikel op (het artikel met de meest recente datum)."
   }
 ]
